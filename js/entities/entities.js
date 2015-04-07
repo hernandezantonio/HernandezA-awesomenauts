@@ -1,6 +1,6 @@
 game.PlayerEntity = me.Entity.extend({
     init: function(x, y, settings) {
-      this.setSuper(); 
+      this.setSuper(x, y); 
       this.setPlayerTimers();
       this.setAttributes();  
        this.type = "PlayerEntity"; 
@@ -18,7 +18,7 @@ game.PlayerEntity = me.Entity.extend({
         
         
     },
-    setSuper: function(){
+    setSuper: function(x, y){
           this._super(me.Entity, 'init', [x, y, {
                 image: "player",
                 width: 64,
@@ -47,13 +47,13 @@ game.PlayerEntity = me.Entity.extend({
     setFlags: function(){
         //Keeps track of wich direction your character is going
         this.facing = "right";
-        me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH); 
         
         
         this.dead = false; 
+        this.attaking = false; 
     },
     
-    setaddAnimation: function(){
+    addAnimation: function(){
               this.renderable.addAnimation("idle", [78]);
         this.renderable.addAnimation("walk", [117, 118, 119, 120, 121, 122, 123, 124, 125], 80);
         this.renderable.addAnimation("attack", [65,66,67,68,69,70,71,72],80); 
@@ -64,7 +64,7 @@ game.PlayerEntity = me.Entity.extend({
     update: function(delta) {
         this.now = new Date().getTime(); 
         
-        this.dead = checkifDead();
+        this.dead = this.checkIfDead();
         
         this.checkKeyPressesAndMove(); 
         
@@ -73,30 +73,7 @@ game.PlayerEntity = me.Entity.extend({
         
       
         
-        if(me.input.isKeyPressed("attack")){
-            if(!this.renderable.isCurrentAnimation("attack")){
-                 console.log(!this.renderable.isCurrentAnimation("attack"));
-                 //Sets the current animation to attack and once that is over
-                 //goes back to the idle animation
-                 this.renderable.setCurrentAnimation("attack","idle");
-                 //makes it so that the next time we start this sequence we begin
-                 //from the first animation, not wherever we left off when we
-                 //switch to another animation
-                 this.renderable.setAnimationFrame(); 
-                     } 
-         } 
-         
-         
-         
-
-      else if (this.body.vel.x !== 0 && !this.renderable.isCurrentAnimation("attack")) {
-            if (!this.renderable.isCurrentAnimation("walk")) {
-                this.renderable.setCurrentAnimation("walk");
-
-            }
-        } else if(!this.renderable.isCurrentAnimation("attack")){
-            this.renderable.setCurrentAnimation("idle");
-        }
+    this.setAnimation(); 
         
         
         me.collision.check(this, true, this.collideHandler.bind(this), true);
@@ -127,6 +104,9 @@ game.PlayerEntity = me.Entity.extend({
         if(me.input.isKeyPressed("jump") && !this.jumping && !this.falling){
           this.jump(); 
         } 
+        
+       this.attacking = me.input.isKeyPressed("attack"); 
+        
     },
     
     moveRight: function(){
@@ -149,6 +129,33 @@ game.PlayerEntity = me.Entity.extend({
           this.jumping = true;
             this.body.vel.y -= this.body.accel.y * me.timer.tick;
     },
+     setAnimation: function(){
+             if(this.attacking){
+            if(!this.renderable.isCurrentAnimation("attack")){
+                 console.log(!this.renderable.isCurrentAnimation("attack"));
+                 //Sets the current animation to attack and once that is over
+                 //goes back to the idle animation
+                 this.renderable.setCurrentAnimation("attack","idle");
+                 //makes it so that the next time we start this sequence we begin
+                 //from the first animation, not wherever we left off when we
+                 //switch to another animation
+                 this.renderable.setAnimationFrame(); 
+                     } 
+         } 
+         
+         
+         
+
+      else if (this.body.vel.x !== 0 && !this.renderable.isCurrentAnimation("attack")) {
+            if (!this.renderable.isCurrentAnimation("walk")) {
+                this.renderable.setCurrentAnimation("walk");
+
+            }
+        } else if(!this.renderable.isCurrentAnimation("attack")){
+            this.renderable.setCurrentAnimation("idle");
+        }
+     }, 
+     
     
     
     
