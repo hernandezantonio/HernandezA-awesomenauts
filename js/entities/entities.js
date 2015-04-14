@@ -218,11 +218,12 @@ game.PlayerEntity = me.Entity.extend({
      
      hitCreep: function(response){
             if( response.b.Health <= game.data.playerAttack);
-              game.data.gold += 1;
+               game.data.gold += 1;
               {   
      }
               response.b.loseHealth(game.data.playerAttack); 
      }
+ 
     });
 
 
