@@ -25,7 +25,7 @@ game.TitleScreen = me.ScreenObject.extend({
         },
         
         newGame: function(){
-            me.input.releasePointerEvent('pointdown', this);
+            me.input.releasePointerEvent('pointerdown', this);
             me.save.remove('exp');
             me.save.remove('exp1');
             me.save.remove('exp2');
