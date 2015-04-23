@@ -191,7 +191,7 @@ game.PlayerEntity = me.Entity.extend({
       };
     },
 
-     stopMovement: function(){
+     stopMovement: function(xdif){
           if (xdif>0){
             if(this.facing==="left"){
               this.body.vel.x = 0;  
