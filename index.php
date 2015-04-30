@@ -62,7 +62,7 @@ require_once("php/controller/create-db.php");
 		<script type="text/javascript" src="js/screens/title.js"></script>
 		<script type="text/javascript" src="js/screens/play.js"></script> 
                 <script type="text/javascript" src="js/screens/spendExp.js"></script>
-                <script type="text/javascript" src="js/screens/newProfile"></script> 
+                <script type="text/javascript" src="js/screens/newProfile.js"></script> 
                 <script type="text/javascript" src="js/screens/loadProfile.js"></script>
 		<!-- /build -->
 		<!-- Bootstrap & Mobile optimization tricks -->
@@ -127,9 +127,9 @@ require_once("php/controller/create-db.php");
                            username: $('#username').val(),
                            password: $('#password').val()
                        },
-                       dataType: "type"
+                       dataType: "text"
                    })
-                  .success(function(response){}
+                  .success(function(response){
                    if(response==="Invalid username and password"){
                        alert(response);
                        

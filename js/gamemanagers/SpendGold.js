@@ -1,4 +1,4 @@
-
+//this is about the gold your able to spend in your game 
 game.SpendGold = Object.extend({
     init: function(x, y, settings) {
         this.now = new Date().getTime();
@@ -24,6 +24,7 @@ game.SpendGold = Object.extend({
         
         return true;
     },
+    //this code is about useing the gold to buy abilities 
     startBuying: function() {
         this.buying = true;
         me.state.pause(me.state.PLAY);
@@ -34,6 +35,7 @@ game.SpendGold = Object.extend({
         me.game.world.addChild(game.data.buyscreen, 34);
         game.data.player.body.setVelocity(0, 0);
         me.state.pause(me.state.PLAY);
+        //these are here so that when u press a key to buy an ability it works  
         me.input.bindKey(me.input.KEY.F1, "F1", true);
         me.input.bindKey(me.input.KEY.F2, "F2", true);
         me.input.bindKey(me.input.KEY.F3, "F3", true);
@@ -43,6 +45,7 @@ game.SpendGold = Object.extend({
         this.setBuyText();
 
     },
+    //this is just the text explaing what the abilities do
     setBuyText: function() {
         game.data.buytext = new (me.Renderable.extend({
             init: function() {
@@ -130,7 +133,7 @@ game.SpendGold = Object.extend({
         }
         
         },
-    
+    //this makes the purchase for whatver you want to buy
     makePurchase: function(skill){
         if(skill === 1){
             game.data.gold -= ((game.data.skill1 +1)*10);

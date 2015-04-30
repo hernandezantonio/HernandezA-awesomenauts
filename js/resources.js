@@ -4,11 +4,16 @@ game.resources = [
 	 * @example
 	 * {name: "example", type:"image", src: "data/img/example.png"},
 	 */
+        //these are all my resources for my screens tiles creeps and  towers 
+        
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$ tiles/backgroundtiles $$$$$$$$$$$$$$$
 {name: "background-tiles", type:"image", src: "data/img/background-tiles.png"},
 {name: "meta-tiles", type:"image", src: "data/img/meta-tiles.png"},
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$ players/towers $$$$$$$$$$$$$$$$$$$$$
 {name: "player", type:"image", src: "data/img/orcSpear.png"},
 {name: "tower", type:"image", src: "data/img/tower_round.svg.png"},
 {name: "creep1", type:"image", src: "data/img/brainmonster.png"},
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$ SCREENS $$$$$$$$$$$$$$$$$$$$$$$$$$$$
 {name: "title-screen", type:"image", src: "data/img/title.png"},
 {name: "exp-screen", type:"image", src: "data/img/loadpic.png"},
 {name: "gold-screen", type:"image", src: "data/img/spend.png"},

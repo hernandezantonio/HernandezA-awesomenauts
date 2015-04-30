@@ -4,7 +4,8 @@ var game = {
 
 	// an object where to store game information
 	data : {
-		// score
+		// calls  for everything from the mount of health at a base to 
+                //the abilities each player has and  the  amount of exp they have
 		score : 0,
                 enemyBaseHealth: 10, 
                 playerBaseHealth: 10,
@@ -82,13 +83,14 @@ var game = {
                 me.pool.register("HeroDeathManager", game.HeroDeathManager); 
                 me.pool.register("ExperienceManager", game.ExperienceManager); 
                 me.pool.register("SpendGold", game.SpendGold);
-                
+                //all the screens that are in my game
 		me.state.set(me.state.MENU, new game.TitleScreen());
 		me.state.set(me.state.PLAY, new game.PlayScreen());
                 me.state.set(me.state.SPENDEXP, new game.SpendExp());
                 me.state.set(me.state.LOAD, new game.LoadProfile());
                 me.state.set(me.state.NEW, new game.NewProfile());
-		// Start the game.  
+                
+		// makes the game start in the menu screen 
 		me.state.change(me.state.MENU
                         );
 	}

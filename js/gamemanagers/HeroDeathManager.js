@@ -1,4 +1,4 @@
-
+//this is all about your character 
 game.HeroDeathManager = Object.extend({
     init: function(x, y, settings) {
         this.alwaysUpdate = true;

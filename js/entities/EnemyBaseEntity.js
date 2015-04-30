@@ -1,3 +1,5 @@
+//this is about the enemy base all this code focuses on eveything about that base
+
 game.EnemyBaseEntity = me.Entity.extend({
     init: function(x, y, settings) {
         this._super(me.Entity, 'init', [x, y, {
