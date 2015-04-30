@@ -107,7 +107,7 @@ require_once("php/controller/create-db.php");
                        },
                        dataType: "type"
                    })
-                  .success(function(response){}
+                  .success(function(response){
                    if(response==="true"){
                        me.state.change(me.state.PLAY);
                    }else{
