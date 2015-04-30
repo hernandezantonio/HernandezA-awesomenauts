@@ -118,8 +118,7 @@ require_once("php/controller/create-db.php");
                         .fail(function(response){
                             alert("Fail");
                         });
-                    }); 
-                    
+                    });                 
                      $("#load").bind("click", function(){
                     $.ajax({
                        type: "POST",
