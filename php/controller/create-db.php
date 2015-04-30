@@ -18,12 +18,6 @@ $query = $_SESSION["connection"]->query("CREATE TABLE users ("
          ."exp4 init(4),"
         ."PRIMARY KEY (id))"); 
 
-if($query) {
-    echo "<p>Succesfully created table: users</p>";
-    
-}
-else {
-    echo "<p>" . $_SESSION ["connection"]->error . "</p>"; 
-}
+
 
  
